@@ -108,6 +108,15 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Rotate Camera"",
+                    ""type"": ""Value"",
+                    ""id"": ""ffbd54f7-609a-4ada-9f8d-c01f6931c77c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -176,6 +185,39 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""7b2f2b2a-35f1-4ea7-a871-d9873b4de789"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotate Camera"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""2bd2cedd-11cb-4b39-b598-08a2ff499aef"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotate Camera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""5b6a0155-65e9-4a57-8933-ccb7593306a9"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotate Camera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -186,6 +228,7 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
         m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
+        m_Gameplay_RotateCamera = m_Gameplay.FindAction("Rotate Camera", throwIfNotFound: true);
     }
 
     ~@PlayerInputSystem()
@@ -268,6 +311,7 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
     private List<IGameplayActions> m_GameplayActionsCallbackInterfaces = new List<IGameplayActions>();
     private readonly InputAction m_Gameplay_Jump;
     private readonly InputAction m_Gameplay_Move;
+    private readonly InputAction m_Gameplay_RotateCamera;
     /// <summary>
     /// Provides access to input actions defined in input action map "Gameplay".
     /// </summary>
@@ -287,6 +331,10 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Gameplay/Move".
         /// </summary>
         public InputAction @Move => m_Wrapper.m_Gameplay_Move;
+        /// <summary>
+        /// Provides access to the underlying input action "Gameplay/RotateCamera".
+        /// </summary>
+        public InputAction @RotateCamera => m_Wrapper.m_Gameplay_RotateCamera;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -319,6 +367,9 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
+            @RotateCamera.started += instance.OnRotateCamera;
+            @RotateCamera.performed += instance.OnRotateCamera;
+            @RotateCamera.canceled += instance.OnRotateCamera;
         }
 
         /// <summary>
@@ -336,6 +387,9 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
+            @RotateCamera.started -= instance.OnRotateCamera;
+            @RotateCamera.performed -= instance.OnRotateCamera;
+            @RotateCamera.canceled -= instance.OnRotateCamera;
         }
 
         /// <summary>
@@ -390,5 +444,12 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMove(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Rotate Camera" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnRotateCamera(InputAction.CallbackContext context);
     }
 }
