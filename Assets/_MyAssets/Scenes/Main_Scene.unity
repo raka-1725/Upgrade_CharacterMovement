@@ -425,7 +425,13 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5931417599121647838, guid: b269da048666ef74cafc48eb3d306652, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1823688467}
-    m_AddedComponents: []
+    - targetCorrespondingSourceObject: {fileID: 5931417599121647838, guid: b269da048666ef74cafc48eb3d306652, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1970045109}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1206020745761412862, guid: b269da048666ef74cafc48eb3d306652, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1423770856}
   m_SourcePrefab: {fileID: 100100000, guid: b269da048666ef74cafc48eb3d306652, type: 3}
 --- !u!1 &432432459
 GameObject:
@@ -729,6 +735,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1760711372}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1423770852 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1206020745761412862, guid: b269da048666ef74cafc48eb3d306652, type: 3}
+  m_PrefabInstance: {fileID: 412308091}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1423770856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423770852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bca5a5b222e37444da0380c7bfef89ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mMainCamera: {fileID: 1823688464}
+  mCameraTarget: {fileID: 1970045108}
+  mRotateSpeed: 5
+  mCurrentAngle: 0
+  mOffsetToPlayer: 10
+  mRotationInput: 0
 --- !u!1 &1760711371
 GameObject:
   m_ObjectHideFlags: 0
@@ -1103,6 +1132,37 @@ MonoBehaviour:
       enableFptlForForwardOpaque: 0
       enableBigTilePrepass: 0
       isFptlEnabled: 0
+--- !u!1 &1970045108
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1970045109}
+  m_Layer: 0
+  m_Name: CameraPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1970045109
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1970045108}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1187315317}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1981453558
 GameObject:
   m_ObjectHideFlags: 0

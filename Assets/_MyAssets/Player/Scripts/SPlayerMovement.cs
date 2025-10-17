@@ -6,6 +6,7 @@ public class SPlayerMovement : MonoBehaviour
     [Header("References")]
     private PlayerInputSystem mPlayerInputSystem;
     private CharacterController mCharacterController;
+    private SCameraMovement mCameraMovement;
 
     [Header("Player Jump Settings")]
     [SerializeField] private float mPlayerJumpForce = 5f;
@@ -16,18 +17,27 @@ public class SPlayerMovement : MonoBehaviour
     [SerializeField] private float mPlayerMoveSpeed = 5;
     private Vector3 mHorizontalVelocity;
     private Vector2 mMoveInput;
+    private float mCameraRotation;
+
     private void Awake()
     {
         mPlayerInputSystem = new PlayerInputSystem();
         mPlayerInputSystem.Gameplay.Jump.performed += PerformedJump;
         mPlayerInputSystem.Gameplay.Move.performed += PlayerMovement;
         mPlayerInputSystem.Gameplay.Move.canceled += PlayerMovement;
+        mPlayerInputSystem.Gameplay.RotateCamera.performed += CameraRotation;
+        mPlayerInputSystem.Gameplay.RotateCamera.canceled += CameraRotation;
         mCharacterController = GetComponent<CharacterController>();
+        mCameraMovement = GetComponent<SCameraMovement>();
     }
     private void PlayerMovement(InputAction.CallbackContext context)
     {
         mMoveInput = context.ReadValue<Vector2>();
         Debug.Log($"Player is Moving");
+    }
+    private void CameraRotation(InputAction.CallbackContext context) 
+    {
+        mCameraRotation = context.ReadValue<float>();
     }
     private void OnEnable()
     {
@@ -47,6 +57,8 @@ public class SPlayerMovement : MonoBehaviour
     }
     private void Update()
     {
+        mCameraMovement.RotateCamera(mCameraRotation);
+
         if(mVerticalVelocity.y > -mPlayerFallSpeed)
         {
             mVerticalVelocity.y += Physics.gravity.y * Time.deltaTime;
