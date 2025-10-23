@@ -19,6 +19,14 @@ public class SPlayerMovement : MonoBehaviour
     private Vector2 mMoveInput;
     private float mCameraRotation;
 
+    [Header("Stats")]
+    private float mCurrentSpeed;
+
+    public float currentInputX => mMoveInput.x;
+    public float currentInputY => mMoveInput.y;
+    public float cameraRotation => mCameraRotation;
+    public float playerSpeed => mCurrentSpeed;
+    public Transform playerTransform => this.transform;
     private void Awake()
     {
         mPlayerInputSystem = new PlayerInputSystem();
@@ -59,6 +67,7 @@ public class SPlayerMovement : MonoBehaviour
     {
         mCameraMovement.RotateCamera(mCameraRotation);
 
+
         if(mVerticalVelocity.y > -mPlayerFallSpeed)
         {
             mVerticalVelocity.y += Physics.gravity.y * Time.deltaTime;
@@ -80,5 +89,6 @@ public class SPlayerMovement : MonoBehaviour
 
         Vector3 FinalMov = (mPlayerMoveSpeed * mHorizontalVelocity) + mVerticalVelocity;
         mCharacterController.Move(FinalMov * Time.deltaTime);
+        mCurrentSpeed = mCharacterController.velocity.magnitude;
     }
 }
