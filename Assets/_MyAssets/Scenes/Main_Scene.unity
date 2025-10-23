@@ -2931,7 +2931,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mMainCamera: {fileID: 1823688464}
   mCameraTarget: {fileID: 1970045108}
-  mRotateSpeed: 15
+  mRotateSpeed: 0
   mCurrentAngle: 0
   mOffsetToPlayer: 10
   mRotationInput: 0
@@ -3157,7 +3157,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 30
   m_WholeNumbers: 0
-  m_Value: 15
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
