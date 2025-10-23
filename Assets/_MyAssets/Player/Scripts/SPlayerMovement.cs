@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 [RequireComponent(typeof(CharacterController))]
 public class SPlayerMovement : MonoBehaviour
 {
@@ -21,12 +22,11 @@ public class SPlayerMovement : MonoBehaviour
 
     [Header("Stats")]
     private float mCurrentSpeed;
-
-    public float currentInputX => mMoveInput.x;
-    public float currentInputY => mMoveInput.y;
-    public float cameraRotation => mCameraRotation;
+    
+    public Vector2 currentInput => mMoveInput;
     public float playerSpeed => mCurrentSpeed;
-    public Transform playerTransform => this.transform;
+
+    public bool bJump => !mCharacterController.isGrounded;
     private void Awake()
     {
         mPlayerInputSystem = new PlayerInputSystem();
@@ -42,6 +42,7 @@ public class SPlayerMovement : MonoBehaviour
     {
         mMoveInput = context.ReadValue<Vector2>();
         Debug.Log($"Player is Moving");
+        Debug.Log($"Player input{mMoveInput}");
     }
     private void CameraRotation(InputAction.CallbackContext context) 
     {
@@ -57,7 +58,8 @@ public class SPlayerMovement : MonoBehaviour
     }
     private void PerformedJump(InputAction.CallbackContext context)
     {
-        if(mCharacterController.isGrounded)
+ 
+        if (mCharacterController.isGrounded)
         {
             Debug.Log($"Player is Jumping");
             mVerticalVelocity.y = mPlayerJumpForce;

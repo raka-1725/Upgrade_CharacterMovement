@@ -1,7 +1,4 @@
-using System.Linq.Expressions;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class SCameraMovement : MonoBehaviour
 {
@@ -16,6 +13,9 @@ public class SCameraMovement : MonoBehaviour
 
     [Header("Input")]
     [SerializeField] private float mRotationInput;
+
+    public float cameraRotation => mCurrentAngle;
+    public float rotationInput => mRotationInput;
 
     private void Awake()
     {
@@ -36,5 +36,10 @@ public class SCameraMovement : MonoBehaviour
         mMainCamera.transform.position = mCameraTarget.transform.position + offset;
 
         mMainCamera.transform.LookAt(mCameraTarget.transform.position);
+    }
+
+    public void SetRotationSpeed(float input) 
+    {
+        mRotateSpeed = input;
     }
 }
