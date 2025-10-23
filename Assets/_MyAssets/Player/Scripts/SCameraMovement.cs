@@ -29,7 +29,7 @@ public class SCameraMovement : MonoBehaviour
     {
         mRotationInput = input;
 
-        mCurrentAngle += mRotationInput * mRotateSpeed * Time.deltaTime;
+        mCurrentAngle += -(mRotationInput * mRotateSpeed * Time.deltaTime);
         Quaternion rotation = Quaternion.Euler(0, mCurrentAngle - 45, 0);
 
         Vector3 offset = rotation * new Vector3(-10, 2, -mOffsetToPlayer);
