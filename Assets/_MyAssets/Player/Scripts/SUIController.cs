@@ -55,6 +55,8 @@ public class SUIController : MonoBehaviour
     {
         mPlayerMovement = FindAnyObjectByType<SPlayerMovement>();
         mCameraMovement = FindAnyObjectByType<SCameraMovement>();
+        mCameraRotationSpeed = mCameraMovement.rotationSpeed;
+        mCameraRotationSpeedText.text = mCameraRotationSpeed.ToString("F2");
         mCameraRotationSpeedSlider.onValueChanged.AddListener(UpdateCameraRotationSpeed);
     }
     private void Update()

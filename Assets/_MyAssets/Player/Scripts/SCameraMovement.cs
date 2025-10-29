@@ -15,6 +15,8 @@ public class SCameraMovement : MonoBehaviour
     [SerializeField] private float mRotationInput;
     public float cameraRotation => mCurrentAngle;
     public float rotationInput => mRotationInput;
+
+    public float rotationSpeed => mRotateSpeed;
     private void Awake()
     {
         if (mMainCamera == null || mCameraTarget == null) 
