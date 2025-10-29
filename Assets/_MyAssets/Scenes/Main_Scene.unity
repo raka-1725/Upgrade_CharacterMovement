@@ -1551,6 +1551,81 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &464671572
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 464671573}
+  - component: {fileID: 464671575}
+  - component: {fileID: 464671574}
+  m_Layer: 0
+  m_Name: F
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &464671573
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 464671572}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1953498723}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 94.5, y: -160.1}
+  m_SizeDelta: {x: 70, y: 70}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &464671574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 464671572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 2f0a08cbdb01953439e9780c038e6779, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &464671575
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 464671572}
+  m_CullTransparentMesh: 1
 --- !u!1 &484984141
 GameObject:
   m_ObjectHideFlags: 0
@@ -6094,6 +6169,7 @@ RectTransform:
   - {fileID: 1732533600}
   - {fileID: 1113502572}
   - {fileID: 1336414827}
+  - {fileID: 464671573}
   - {fileID: 183083198}
   - {fileID: 1917987743}
   - {fileID: 122612106}
@@ -6248,6 +6324,7 @@ MonoBehaviour:
   m_E_key: {fileID: 1732533601}
   m_Q_key: {fileID: 69833972}
   m_Space_key: {fileID: 1336414828}
+  mInteractionKey: {fileID: 464671574}
   mKeyboardInput: {fileID: 1953498722}
   mGameControllerInput: {fileID: 721040531}
   mSwitchInputButton: {fileID: 1430935016}
@@ -6258,6 +6335,7 @@ MonoBehaviour:
   m_E_key_Sprite: {fileID: 21300000, guid: c154adad311470e438afdac654fb3da6, type: 3}
   m_Q_key_Sprite: {fileID: 21300000, guid: 7fef47c3a0802d04ab78f02a281f1170, type: 3}
   m_Space_key_Sprite: {fileID: 21300000, guid: 44943654e08cb0d41bbc8d02154e61c5, type: 3}
+  m_F_key_Sprite: {fileID: 21300000, guid: 2f0a08cbdb01953439e9780c038e6779, type: 3}
   m_W_Key_Pressed: {fileID: 21300000, guid: d2cf9fe60405af44b9835204e2f94448, type: 3}
   m_A_key_Pressed: {fileID: 21300000, guid: 7d18e9d218301d34582a19df113bbed4, type: 3}
   m_S_key_Pressed: {fileID: 21300000, guid: 707a1b9ce78ab8e4b89fff913e608486, type: 3}
@@ -6265,12 +6343,14 @@ MonoBehaviour:
   m_E_key_Pressed: {fileID: 21300000, guid: 0f131da0615c23f4daf71c875d0772ac, type: 3}
   m_Q_key_Pressed: {fileID: 21300000, guid: 9075771b33cb6f04cb225d63a4ff9bcc, type: 3}
   m_Space_key_Pressed: {fileID: 21300000, guid: 1ac732f9c81297341a3a00552a3101c4, type: 3}
+  m_F_key_Pressed: {fileID: 21300000, guid: 44d31e03539d76e41a5c7a5a946f410e, type: 3}
   m_LeftStick: {fileID: 503884556}
   m_RightStick: {fileID: 86201936}
   m_Dkey: {fileID: 2007441441}
   m_RightTrigger: {fileID: 1670334938}
   m_LeftTrigger: {fileID: 1459425756}
   mAButton: {fileID: 1700207348}
+  mBButton: {fileID: 757776845}
   m_LeftStickSprites:
   - {fileID: 21300000, guid: 4f3f716ff7aed74499f4ed90b08eb33d, type: 3}
   - {fileID: 21300000, guid: 5f104877214636a48825008ecd822f78, type: 3}
@@ -6298,6 +6378,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 938bf3426af0a274890657c8002a255b, type: 3}
   - {fileID: 21300000, guid: b8d0b03a1ad1d9c4587cd7e590de128c, type: 3}
   - {fileID: 21300000, guid: 6c70fa5d9d072ca46937731f79b5805f, type: 3}
+  mBButtonSprites:
+  - {fileID: 21300000, guid: 73f711a7ba5543e488faa0c18cb1287b, type: 3}
+  - {fileID: 21300000, guid: c830da31c4acb714694d7548dc111788, type: 3}
   mCameraRotationSpeedSlider: {fileID: 1530287911}
   bGameController: 0
 --- !u!114 &1965580341
