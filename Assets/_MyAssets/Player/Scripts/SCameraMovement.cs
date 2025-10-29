@@ -7,16 +7,14 @@ public class SCameraMovement : MonoBehaviour
     [SerializeField] private GameObject mCameraTarget;
 
     [Header("Settings")]
-    [SerializeField] private float mRotateSpeed;
+    [SerializeField] private float mRotateSpeed = 90;
     [SerializeField] private float mCurrentAngle = 0;
     [SerializeField] private float mOffsetToPlayer = 10;
 
     [Header("Input")]
     [SerializeField] private float mRotationInput;
-
     public float cameraRotation => mCurrentAngle;
     public float rotationInput => mRotationInput;
-
     private void Awake()
     {
         if (mMainCamera == null || mCameraTarget == null) 
@@ -24,6 +22,10 @@ public class SCameraMovement : MonoBehaviour
             Debug.LogWarning("Objects are not assigned!!");
             return;
         }
+    }
+    private void Start()
+    {
+        mRotateSpeed = 90;
     }
     public void RotateCamera(float input) 
     {
@@ -37,7 +39,6 @@ public class SCameraMovement : MonoBehaviour
 
         mMainCamera.transform.LookAt(mCameraTarget.transform.position);
     }
-
     public void SetRotationSpeed(float input) 
     {
         mRotateSpeed = input;

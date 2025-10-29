@@ -51,7 +51,6 @@ public class SUIController : MonoBehaviour
 
     [Header("Slider")]
     [SerializeField] Slider mCameraRotationSpeedSlider;
-
     private void Awake()
     {
         mPlayerMovement = FindAnyObjectByType<SPlayerMovement>();
@@ -63,14 +62,12 @@ public class SUIController : MonoBehaviour
         UpdatePlayerInput();
         UpdatePlayerStats();
     }
-
     private void UpdateCameraRotationSpeed(float speed)
     {
         mCameraRotationSpeed = speed;
         mCameraRotationSpeedText.text = mCameraRotationSpeed.ToString("F2");
         mCameraMovement.SetRotationSpeed(mCameraRotationSpeed);
     }
-
     private void UpdatePlayerInput() 
     {
         mMoveInput = mPlayerMovement.currentInput;
@@ -105,11 +102,9 @@ public class SUIController : MonoBehaviour
                 m_Space_key.sprite = m_Space_key_Pressed;
             }
         }
-
         mCameraRotation = mCameraMovement.cameraRotation;
         mCameraRotationInput = mCameraMovement.rotationInput;
         mCameraRotationText.text = mCameraRotation.ToString("F3");
-
         if (mCameraMovement) 
         {
             m_Q_key.sprite = m_Q_key_Sprite;
@@ -125,7 +120,6 @@ public class SUIController : MonoBehaviour
             }
         }
     }
-
     private void UpdatePlayerStats() 
     {
         mPlayerSpeed = mPlayerMovement.playerSpeed;
@@ -134,5 +128,4 @@ public class SUIController : MonoBehaviour
         mPlayerTransform = mPlayerMovement.transform;
         mPlayerPositionText.SetText(mPlayerTransform.position.ToString("F2"));
     }
-
 }
