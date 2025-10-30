@@ -1,3 +1,4 @@
+using System.Timers;
 using UnityEngine;
 using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
@@ -7,6 +8,7 @@ public class SPlayerMovement : MonoBehaviour
     private PlayerInputSystem mPlayerInputSystem;
     private CharacterController mCharacterController;
     private SCameraMovement mCameraMovement;
+    private Animator mAnimator;
 
     [Header("Player Jump Settings")]
     [SerializeField] private float mPlayerJumpForce = 5f;
@@ -15,6 +17,7 @@ public class SPlayerMovement : MonoBehaviour
 
     [Header("Player Movement Settings")]
     [SerializeField] private float mPlayerMoveSpeed = 5;
+    [SerializeField] private float mPlayerAirMoveSpeed = 2f;
     private Vector3 mHorizontalVelocity;
     private Vector2 mMoveInput;
     private float mCameraRotation;
@@ -33,6 +36,8 @@ public class SPlayerMovement : MonoBehaviour
         mPlayerInputSystem.Gameplay.Move.canceled += PlayerMovement;
         mPlayerInputSystem.Gameplay.RotateCamera.performed += CameraRotation;
         mPlayerInputSystem.Gameplay.RotateCamera.canceled += CameraRotation;
+
+        mAnimator = GetComponentInChildren<Animator>();
 
         mCharacterController = GetComponent<CharacterController>();
         mCameraMovement = GetComponent<SCameraMovement>();
@@ -55,7 +60,7 @@ public class SPlayerMovement : MonoBehaviour
     }
     private void PerformedJump(InputAction.CallbackContext context)
     {
-        if (mCharacterController.isGrounded)
+        if (mCharacterController.isGrounded && mVerticalVelocity.y <= 0f)
         {
             mVerticalVelocity.y = mPlayerJumpForce;
         }
@@ -64,14 +69,21 @@ public class SPlayerMovement : MonoBehaviour
     {
         mCameraMovement.RotateCamera(mCameraRotation);
 
-        if(mVerticalVelocity.y > -mPlayerFallSpeed)
+        if (mCharacterController.isGrounded)
+        {
+            if (mVerticalVelocity.y < 0) 
+            {
+                mVerticalVelocity.y = -1;
+            }
+            mHorizontalVelocity = (Camera.main.transform.right * mMoveInput.x + Camera.main.transform.forward * mMoveInput.y).normalized;
+            mHorizontalVelocity.y = 0f;
+        }
+        else
         {
             mVerticalVelocity.y += Physics.gravity.y * Time.deltaTime;
         }
-        mHorizontalVelocity = (Camera.main.transform.right * mMoveInput.x + Camera.main.transform.forward * mMoveInput.y).normalized;
-        mHorizontalVelocity = Vector3.ClampMagnitude(mHorizontalVelocity, mPlayerMoveSpeed);
 
-        if (mHorizontalVelocity.sqrMagnitude > 0) 
+        if (mHorizontalVelocity.sqrMagnitude > 0 && mCharacterController.isGrounded) 
         {
             mHorizontalVelocity -= mHorizontalVelocity.normalized * 2.5f *Time.deltaTime;
             if (mHorizontalVelocity.sqrMagnitude < 0.1)
@@ -79,8 +91,12 @@ public class SPlayerMovement : MonoBehaviour
                 mHorizontalVelocity = Vector3.zero;
             }
         }
-        Vector3 FinalMov = (mPlayerMoveSpeed * mHorizontalVelocity) + mVerticalVelocity;
+        float speed = mCharacterController.isGrounded ? mPlayerMoveSpeed : mPlayerAirMoveSpeed;
+        Vector3 FinalMov = (speed * mHorizontalVelocity) + mVerticalVelocity;
         mCharacterController.Move(FinalMov * Time.deltaTime);
         mCurrentSpeed = mCharacterController.velocity.magnitude;
+
+
+        mAnimator.SetFloat("Speed", Mathf.Abs(mMoveInput.x) + Mathf.Abs(mMoveInput.y));
     }
 }

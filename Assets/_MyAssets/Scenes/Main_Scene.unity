@@ -1436,6 +1436,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6271487319223112, guid: b269da048666ef74cafc48eb3d306652, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 6d070e08d41a31e4886a8611df173b37, type: 3}
+    - target: {fileID: 6271487319223112, guid: b269da048666ef74cafc48eb3d306652, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6271487319223112, guid: b269da048666ef74cafc48eb3d306652, type: 3}
+      propertyPath: m_WarningMessage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6271487319223112, guid: b269da048666ef74cafc48eb3d306652, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 982767699719817724, guid: b269da048666ef74cafc48eb3d306652, type: 3}
+      propertyPath: m_SkinWidth
+      value: 0.02
+      objectReference: {fileID: 0}
     - target: {fileID: 1206020745761412862, guid: b269da048666ef74cafc48eb3d306652, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1488,8 +1508,14 @@ PrefabInstance:
       propertyPath: mPlayerMoveSpeed
       value: 15
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    - target: {fileID: 6911864065476244159, guid: b269da048666ef74cafc48eb3d306652, type: 3}
+      propertyPath: mPlayerAirMoveSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
+    m_RemovedGameObjects:
+    - {fileID: 5950895535144012669, guid: b269da048666ef74cafc48eb3d306652, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5931417599121647838, guid: b269da048666ef74cafc48eb3d306652, type: 3}
       insertIndex: -1
@@ -4351,7 +4377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -4683,7 +4709,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
