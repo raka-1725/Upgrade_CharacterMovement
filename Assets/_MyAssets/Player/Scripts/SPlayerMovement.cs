@@ -93,9 +93,15 @@ public class SPlayerMovement : MonoBehaviour
         }
         float speed = mCharacterController.isGrounded ? mPlayerMoveSpeed : mPlayerAirMoveSpeed;
         Vector3 FinalMov = (speed * mHorizontalVelocity) + mVerticalVelocity;
+        Vector3 camFoward = Camera.main.transform.forward;
+        camFoward.y = 0;
+        Quaternion targetRotation = Quaternion.LookRotation(camFoward);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
         mCharacterController.Move(FinalMov * Time.deltaTime);
         mCurrentSpeed = mCharacterController.velocity.magnitude;
 
+
+        
 
         mAnimator.SetFloat("Speed", Mathf.Abs(mMoveInput.x) + Mathf.Abs(mMoveInput.y));
     }
