@@ -96,9 +96,9 @@ public class SUIController : MonoBehaviour
         mPlayerMovement = FindAnyObjectByType<SPlayerMovement>();
         mCameraMovement = FindAnyObjectByType<SCameraMovement>();
         mCameraRotationSpeed = mCameraMovement.rotationSpeed;
-        mCameraRotationSpeedText.text = mCameraRotationSpeed.ToString("F2");
         mCameraRotationSpeedSlider.onValueChanged.AddListener(UpdateCameraRotationSpeed);
         mSwitchInputButton.onClick.AddListener(SwitchInputUI);
+        mCameraRotationSpeedText.text = mCameraRotationSpeedSlider.value.ToString("F2");
 
         mGameControllerInput.SetActive(bGameController); 
         mKeyboardInput.SetActive(!bGameController);
@@ -107,14 +107,11 @@ public class SUIController : MonoBehaviour
     {
         UpdatePlayerInput();
         UpdatePlayerStats();
-
-
-
     }
     private void UpdateCameraRotationSpeed(float speed)
     {
         mCameraRotationSpeed = speed;
-        mCameraRotationSpeedText.text = mCameraRotationSpeed.ToString("F2");
+        mCameraRotationSpeedText.text = mCameraRotationSpeedSlider.value.ToString("F2");
         mCameraMovement.SetRotationSpeed(mCameraRotationSpeed);
     }
     private void UpdatePlayerInput() 
