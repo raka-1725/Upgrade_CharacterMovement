@@ -32,11 +32,14 @@ public class SUIController : MonoBehaviour
     [SerializeField] Image m_Q_key;
     [SerializeField] Image m_Space_key;
 
+    [Header("Interaction")]
+    [SerializeField] Image mInteractionKey;
+
     [Header("InputUI")]
     [SerializeField] GameObject mKeyboardInput;
     [SerializeField] GameObject mGameControllerInput;
     [SerializeField] Button mSwitchInputButton;
-    
+
     [Header("KeySprite")]
     [SerializeField] Sprite m_W_Key_Sprite;
     [SerializeField] Sprite m_A_key_Sprite;
@@ -45,6 +48,7 @@ public class SUIController : MonoBehaviour
     [SerializeField] Sprite m_E_key_Sprite;
     [SerializeField] Sprite m_Q_key_Sprite;
     [SerializeField] Sprite m_Space_key_Sprite;
+    [SerializeField] Sprite m_F_key_Sprite;
 
     [SerializeField] Sprite m_W_Key_Pressed;
     [SerializeField] Sprite m_A_key_Pressed;
@@ -53,6 +57,9 @@ public class SUIController : MonoBehaviour
     [SerializeField] Sprite m_E_key_Pressed;
     [SerializeField] Sprite m_Q_key_Pressed;
     [SerializeField] Sprite m_Space_key_Pressed;
+    [SerializeField] Sprite m_F_key_Pressed;
+
+
     [Header("GameControllerSprite")]
     [SerializeField] Image m_LeftStick;
     [SerializeField] Image m_RightStick;
@@ -62,14 +69,15 @@ public class SUIController : MonoBehaviour
     //[SerializeField] Image mXButton;
     //[SerializeField] Image mYButton;
     [SerializeField] Image mAButton;
-    //[SerializeField] Image mBButton;
+    [SerializeField] Image mBButton;
 
     [SerializeField] Sprite[] m_LeftStickSprites; //0-default, 1-up, 2-down, 3-left, 4-right
-    [SerializeField] Sprite[] m_RightSticksSprites; 
+    [SerializeField] Sprite[] m_RightSticksSprites;
     [SerializeField] Sprite[] mRTSprites;
     [SerializeField] Sprite[] mLTSprites;
     [SerializeField] Sprite[] mAButtonSprites;
     [SerializeField] Sprite[] mDkeySprites;
+    [SerializeField] Sprite[] mBButtonSprites;
 
 
 
@@ -80,6 +88,8 @@ public class SUIController : MonoBehaviour
     
     
     public bool bGameController;
+    private bool bInteracting;
+
 
     private void Awake()
     {
@@ -97,6 +107,9 @@ public class SUIController : MonoBehaviour
     {
         UpdatePlayerInput();
         UpdatePlayerStats();
+
+
+
     }
     private void UpdateCameraRotationSpeed(float speed)
     {
@@ -239,5 +252,37 @@ public class SUIController : MonoBehaviour
         mPlayerPositionText.SetText(mPlayerTransform.position.ToString("F2"));
     }
 
+
+
+
+
+    public void UpdateInteractablityUI(bool ispressed) 
+    {
+        bInteracting = ispressed;
+        if (!bGameController)
+        {
+            if (ispressed)
+            {
+                mInteractionKey.sprite = m_F_key_Pressed;
+            }
+            else
+            {
+                mInteractionKey.sprite = m_F_key_Sprite;
+            }
+        }
+        else
+        {
+            if (ispressed)
+            {
+                mBButton.sprite = mBButtonSprites[1];
+            }
+            else
+            { 
+                mBButton.sprite = mBButtonSprites[0];
+            }
+        }
+    }
+
+    
 
 }
