@@ -8,7 +8,7 @@ public class SUIController : MonoBehaviour
 {
     SPlayerMovement mPlayerMovement;
     SCameraMovement mCameraMovement;
-
+    
     [Header("Stats")]
     [SerializeField] TextMeshProUGUI mInputText;
     [SerializeField] TextMeshProUGUI mCameraRotationText;
@@ -97,11 +97,14 @@ public class SUIController : MonoBehaviour
         mCameraMovement = FindAnyObjectByType<SCameraMovement>();
         mCameraRotationSpeed = mCameraMovement.rotationSpeed;
         mCameraRotationSpeedSlider.onValueChanged.AddListener(UpdateCameraRotationSpeed);
-        mSwitchInputButton.onClick.AddListener(SwitchInputUI);
+
         mCameraRotationSpeedText.text = mCameraRotationSpeedSlider.value.ToString("F2");
 
         mGameControllerInput.SetActive(bGameController); 
         mKeyboardInput.SetActive(!bGameController);
+        
+        SInputMethodDetector.OnInputMethodChanged += SwitchInputUI;
+        SwitchInputUI(SInputMethodDetector.CurrentInputMethod);
     }
     private void Update()
     {
@@ -132,11 +135,12 @@ public class SUIController : MonoBehaviour
         }
     }
 
-    private void SwitchInputUI() 
+    private void SwitchInputUI(SInputMethodDetector.InputMethod method) 
     {
+        bool bIsController = method == SInputMethodDetector.InputMethod.Controller;
         bGameController = !bGameController;
-        mGameControllerInput.SetActive(bGameController);
-        mKeyboardInput.SetActive(!bGameController);
+        mGameControllerInput.SetActive(bIsController);
+        mKeyboardInput.SetActive(!bIsController);
     }
 
     private void UpdateCameraRotationInputUI()

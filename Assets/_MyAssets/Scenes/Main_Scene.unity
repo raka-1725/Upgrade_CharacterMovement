@@ -1622,6 +1622,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6911864065476244159, guid: b269da048666ef74cafc48eb3d306652, type: 3}
+      propertyPath: mUI
+      value: 
+      objectReference: {fileID: 1965580340}
+    - target: {fileID: 6911864065476244159, guid: b269da048666ef74cafc48eb3d306652, type: 3}
       propertyPath: mPlayerFallSpeed
       value: 50
       objectReference: {fileID: 0}
@@ -4614,7 +4618,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1430935015
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5093,7 +5097,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 0
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -6802,6 +6806,7 @@ GameObject:
   - component: {fileID: 1965580342}
   - component: {fileID: 1965580341}
   - component: {fileID: 1965580340}
+  - component: {fileID: 1965580344}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -6981,6 +6986,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1965580344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965580338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0f3949184bd0614ca4154ebd42f6edf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SInputMethodDetector
 --- !u!1 &1970045108
 GameObject:
   m_ObjectHideFlags: 0

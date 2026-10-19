@@ -9,7 +9,7 @@ public class SPlayerMovement : MonoBehaviour
     private CharacterController mCharacterController;
     private SCameraMovement mCameraMovement;
     private Animator mAnimator;
-
+    [Header("UI")] [SerializeField] private SUIController mUI;
     [Header("Player Jump Settings")]
     [SerializeField] private float mPlayerJumpForce = 5f;
     [SerializeField] private float mPlayerFallSpeed = 50f;
@@ -27,6 +27,7 @@ public class SPlayerMovement : MonoBehaviour
     public Vector2 currentInput => mMoveInput;
     public float playerSpeed => mCurrentSpeed;
     public bool bJump => !mCharacterController.isGrounded;
+    
     private void Awake()
     {
         mPlayerInputSystem = new PlayerInputSystem();
@@ -36,11 +37,12 @@ public class SPlayerMovement : MonoBehaviour
         mPlayerInputSystem.Gameplay.Move.canceled += PlayerMovement;
         mPlayerInputSystem.Gameplay.RotateCamera.performed += CameraRotation;
         mPlayerInputSystem.Gameplay.RotateCamera.canceled += CameraRotation;
-
+        
         mAnimator = GetComponentInChildren<Animator>();
 
         mCharacterController = GetComponent<CharacterController>();
         mCameraMovement = GetComponent<SCameraMovement>();
+        
     }
     private void PlayerMovement(InputAction.CallbackContext context)
     {
@@ -65,6 +67,19 @@ public class SPlayerMovement : MonoBehaviour
             mVerticalVelocity.y = mPlayerJumpForce;
         }
     }
+/*
+    private void DetectControlDevice(InputAction.CallbackContext context)
+    {
+        if (context.control.device is Gamepad)
+        {
+            mUI.SwitchInputUI(true);
+        }
+        else if (context.control.device is Keyboard)
+        {
+            mUI.SwitchInputUI(false);
+        }
+    }
+*/
     private void Update()
     {
         mCameraMovement.RotateCamera(mCameraRotation);
