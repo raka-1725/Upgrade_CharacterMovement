@@ -352,39 +352,6 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""1D Axis"",
-                    ""id"": ""49bdea52-ffa8-450d-b7bf-ca57e2e8cea9"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Rotate Camera"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""06f65c4e-07fd-4cfb-bf85-d6c891c98443"",
-                    ""path"": ""<Gamepad>/leftTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Rotate Camera"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""70188ce4-d767-4334-ba19-3838fb9c324b"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Rotate Camera"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""1D Axis"",
                     ""id"": ""27f7aef9-1f7a-412f-aafb-cfa79ff6c257"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",

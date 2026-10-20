@@ -137,10 +137,9 @@ public class SUIController : MonoBehaviour
 
     private void SwitchInputUI(SInputMethodDetector.InputMethod method) 
     {
-        bool bIsController = method == SInputMethodDetector.InputMethod.Controller;
-        bGameController = !bGameController;
-        mGameControllerInput.SetActive(bIsController);
-        mKeyboardInput.SetActive(!bIsController);
+        bGameController = method == SInputMethodDetector.InputMethod.Controller;
+        mGameControllerInput.SetActive(bGameController);
+        mKeyboardInput.SetActive(!bGameController);
     }
 
     private void UpdateCameraRotationInputUI()
@@ -240,7 +239,6 @@ public class SUIController : MonoBehaviour
             {
                 mAButton.sprite = mAButtonSprites[1];
             }
-
         }
     }
 
